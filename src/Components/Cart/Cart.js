@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classes from './Cart.module.css'
 import iconImg from '../../asset/bag.png'
 import CartContext from '../../store/CartContext';
@@ -13,6 +13,13 @@ const Cart = () => {
 
   // 结账页的显示和隐藏
   const [shwoCheckout, setShowCheckout] = useState(false)
+
+  useEffect(() => {
+    if (ctx.totalAmount === 0) {
+      setShowDetail(false)
+      setShowCheckout(false)
+    }
+  })
 
   const showCheckoutHandler = () => {
     if (ctx.totalAmount === 0) return
