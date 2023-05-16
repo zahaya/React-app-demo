@@ -13,18 +13,16 @@ const Count = (props) => {
 
 
   const addButtonHandler = () => {
-    ctx.addItem(props.meal)
+    ctx.cartDataDispatch({ type: 'addItem', meal: props.meal })
   }
 
   const subButtonHandler = () => {
-    ctx.removeItem(props.meal)
+    ctx.cartDataDispatch({ type: 'removeItem', meal: props.meal })
   }
 
 
   return (
     <div className={classes.counter}>
-
-
       {/* 
           当props.amount存在且不等于0时，显示按钮-和数字，否则为null
       */}
